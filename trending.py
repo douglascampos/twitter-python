@@ -11,11 +11,10 @@ def world(twitter_api):
 	WORLD_WOE_ID = 1
 	world_trends = twitter_api.trends.place(_id=WORLD_WOE_ID)
 
-	world_trends_set = set([trend['name'] 
-		for trend in world_trends[0]['trends']])
+	world_trends_parse = parse_trending(world_trends);
 
 	# print world_trends
-	return world_trends_set
+	return world_trends_parse
 
 
 def brazil(twitter_api):
@@ -23,12 +22,15 @@ def brazil(twitter_api):
 
 	br_trends = twitter_api.trends.place(_id=BR_WOE_ID)
 
-	br_trends_set = set([trend['name'] 
-		for trend in br_trends[0]['trends']])
+	br_trends_parse = parse_trending(br_trends);
 
 	# print br_trends
-	return br_trends_set
+	return br_trends_parse
 
+def parse_trending(trending):
+	trends_set = set([trend['name']
+		for trend in trending[0]['trends']])
+	return trends_set
 
 def world_json(twitter_api):
 	wld = world(twitter_api);
