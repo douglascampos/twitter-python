@@ -44,17 +44,24 @@ print "option selected is: ", know_options[opt]
 
 if opt == "1":
 	trends_brz = trending.brazil(twitter_api);
+	br_trends_parse = trending.parse_trending(trends_brz);
 	print "TRENDS BRAZIL"
 	print
-	print trends_brz
+	print br_trends_parse
 elif opt == "2":
 	trends_world = trending.world(twitter_api);
+	world_trends_parse = trending.parse_trending(trends_world);
 	print "TRENDS WORLD"
 	print
-	print trends_world
+	print world_trends_parse
 elif opt == "3":
 	brz_json = trending.brazil_json(twitter_api);
 	print "JSON"
 	print
-	print "brz_json"
+	print brz_json
+elif opt == "4":
+	wld_json = trending.world_json(twitter_api);
+	print "JSON"
+	print
+	print wld_json
 
